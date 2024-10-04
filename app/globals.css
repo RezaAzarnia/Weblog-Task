@@ -2,26 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "iran";
+  src:
+    local("iran"),
+    url("./fonts/IRANSansWeb(FaNum).woff") format(woff);
+  font-wight: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.line:before {
+  border-top: 2px solid #dfdfdf;
+  content: "";
+  margin: 0 auto; 
+  position: absolute; 
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+}
+.spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-right-color: transparent;
+  animation: rotate 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  to {
+    transform: rotate(360deg);
   }
 }
