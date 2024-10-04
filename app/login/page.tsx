@@ -2,10 +2,18 @@ import React from "react";
 import Image from "next/image";
 import picture from "@/app/public/img-23.png";
 import LoginForm from "../_Components/LoginForm";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "ورود",
+  description:
+    "یک توضیح مختصر برای صفحه لاگین و تسک مورد نظر",
+    robots: { index: true, follow: true },
+
+  };
 export default function page() {
   return (
     <div className="flex flex-row items-center min-h-screen gap-28">
-      <div className="w-5/12 h-full">
+      <div className="w-full lg:w-5/12 h-full">
         <div className="h-full w-full p-3.5 relative min-h-screen">
           <Image
             src={picture}
@@ -20,7 +28,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className="flex-1 max-w-2xl space-y-4">
+      <div className="hidden lg:block flex-1 max-w-2xl space-y-4">
         <h1 className="text-3xl font-semibold">
           وارد
           <span className="text-lightOrange"> حساب </span>

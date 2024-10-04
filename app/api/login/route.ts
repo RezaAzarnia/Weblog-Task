@@ -20,21 +20,16 @@ export async function POST(req: Request): Promise<NextResponse<LoginResult>> {
         { username, password },
         process.env.JWT_SECRET || ""
       );
-      return NextResponse.json(
-        {
-          ok: true,
-          status:200,
-          token,
-        },
-        {
-          status: 200,
-        }
-      );
+      return NextResponse.json({
+        ok: true,
+        status: 200,
+        token,
+      });
     } else {
       return NextResponse.json(
         {
           ok: false,
-          status : 404,
+          status: 404,
           message: "username or password is wrong",
         },
         { status: 404 }

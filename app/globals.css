@@ -9,12 +9,14 @@
     url("./fonts/IRANSansWeb(FaNum).woff") format(woff);
   font-wight: normal;
 }
-
+body {
+  font-family: "iran";
+}
 .line:before {
   border-top: 2px solid #dfdfdf;
   content: "";
-  margin: 0 auto; 
-  position: absolute; 
+  margin: 0 auto;
+  position: absolute;
   top: 50%;
   left: 0;
   right: 0;
@@ -31,7 +33,19 @@
   animation: rotate 1s linear infinite;
   margin: auto;
 }
-
+.spinner-main{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid red;
+  border-right-color: transparent;
+  animation: rotate 1s linear infinite;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @keyframes rotate {
   from {
     transform: rotate(0deg);
