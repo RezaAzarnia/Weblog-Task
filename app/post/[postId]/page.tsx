@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function page({ params }: Props) {
   const { postId } = params;
   return (
-    <div className="w-full min-h-screen max-w-6xl h-full my-20 mx-auto">
+    <div className="w-full max-w-6xl h-full my-20 mx-auto">
       <div className="mb-2 text-end">
         <BackButton />
       </div>

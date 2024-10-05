@@ -14,11 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <ReactQueryProvider>
-        <body>
-          <div className="min-h-scree size-full">{children}</div>
-        </body>
-      </ReactQueryProvider>
+      <body>
+        <ReactQueryProvider>
+          <div className="min-h-screen size-full">{children}</div>
+        </ReactQueryProvider>
+      </body>
     </html>
   );
 }
