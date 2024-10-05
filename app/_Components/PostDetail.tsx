@@ -9,21 +9,13 @@ type Props = {
 };
 export default function PostDetail({ postId }: Props) {
   const queryClient = useQueryClient();
+  const cachedPosts = queryClient.getQueryData<{ posts: Post[] }>(["posts"]);
+  const initialData = cachedPosts?.posts?.find((p) => p.id === +postId);
 
   const { data: post, isLoading } = useQuery<Post>({
     queryFn: () => getPostDetail(postId),
     queryKey: [`post,${postId}`],
-    initialData: () => {
-      const cachedPosts = queryClient.getQueryData<{ posts: Post[] }>([
-        "posts",
-      ]);
-      if (cachedPosts) {
-        const foundPost = cachedPosts.posts.find((p) => p.id === +postId);
-        return foundPost;
-      } else {
-        return;
-      }
-    },
+    initialData,
   });
   if (isLoading) {
     return <h1 className="text-center text-2xl">در حال بارگذاری</h1>;

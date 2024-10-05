@@ -1,6 +1,7 @@
 import BackButton from "@/app/_Components/BackButton";
 import PostDetail from "@/app/_Components/PostDetail";
 import { getPostDetail } from "@/app/_lib/actions";
+import { QueryClient } from "@tanstack/react-query";
 import { Metadata } from "next";
 import React from "react";
 type Props = {
@@ -20,7 +21,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 export default function page({ params }: Props) {
   const { postId } = params;
-
   return (
     <div className="w-full min-h-screen max-w-6xl h-full my-20 mx-auto">
       <div className="mb-2 text-end">

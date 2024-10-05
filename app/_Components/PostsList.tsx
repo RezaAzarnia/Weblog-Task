@@ -6,7 +6,7 @@ import PostCard from "./PostCard";
 import { Post } from "../_lib/types";
 
 export default function PostsList() {
-  const { data, isLoading ,error} = useQuery<{posts:Post[]}>({
+  const { data, isLoading } = useQuery<{posts:Post[]}>({
     queryFn: () => getWeblogPosts(),
     queryKey: ["posts"],
   });
