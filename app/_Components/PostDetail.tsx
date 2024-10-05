@@ -12,7 +12,7 @@ export default function PostDetail({ postId }: Props) {
   const cachedPosts = queryClient.getQueryData<{ posts: Post[] }>(["posts"]);
   const initialData = cachedPosts?.posts?.find((p) => p.id === +postId);
 
-  const { data: post, isLoading } = useQuery<Post>({
+  const { data: post, isLoading , error } = useQuery<Post , Error>({
     queryFn: () => getPostDetail(postId),
     queryKey: [`post,${postId}`],
     initialData,
@@ -20,8 +20,9 @@ export default function PostDetail({ postId }: Props) {
   if (isLoading) {
     return <h1 className="text-center text-2xl">در حال بارگذاری</h1>;
   }
-  console.log(post);
-  return (
+  if (error) {
+    return <h1 className="text-center">{error?.message}</h1>;
+  }  return (
     <div className="p-4 border border-lightGray rounded-md">
       {post && (
         <>
