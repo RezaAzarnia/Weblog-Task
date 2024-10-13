@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { JsonWebTokenError } from "jsonwebtoken";
 import data from "@/data/blog.json";
 import { verifyJWT } from "@/app/_lib/helpers";
 
@@ -13,37 +12,21 @@ export async function GET(req: Request) {
         { status: 401 }
       );
     }
-    const user = verifyJWT(token);
-    if (user?.username == "admin") {
-      return NextResponse.json(
-        {
-          posts: data,
-          status: 200,
-        },
-        { status: 200 }
-      );
-    }
+
+    verifyJWT(token);
+
     return NextResponse.json(
       {
-        status: 403,
-        message: "Forbidden: You are not authorized to access this data",
+        posts: data,
+        status: 200,
       },
-      { status: 403 }
+      { status: 200 }
     );
-  } catch (error) {
-    if (error instanceof JsonWebTokenError) {
-      return NextResponse.json(
-        {
-          error: "unAuthorized user",
-          status: 401,
-        },
-        { status: 401 }
-      );
-    }
+  } catch (error : any) {
     return NextResponse.json(
       {
         status: 500,
-        message: "Internal Server Error",
+        message:error.message || "Internal Server Error",
       },
       { status: 500 }
     );

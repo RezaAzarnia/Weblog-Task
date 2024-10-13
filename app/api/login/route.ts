@@ -18,7 +18,10 @@ export async function POST(req: Request): Promise<NextResponse<LoginResult>> {
     if (username === "admin" && password === "admin") {
       const token = jwt.sign(
         { username, password },
-        process.env.JWT_SECRET || ""
+        process.env.JWT_SECRET || "",
+        // {
+        //   expiresIn: "10s",
+        // }
       );
       return NextResponse.json({
         ok: true,
