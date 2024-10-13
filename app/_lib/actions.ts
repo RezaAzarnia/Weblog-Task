@@ -3,7 +3,6 @@
 import { cookies } from "next/headers";
 import { LoginResult, Post } from "./types";
 import { redirect } from "next/navigation";
-import { handleError } from "./helpers";
 
 export async function loginUser(inputValues: unknown): Promise<LoginResult> {
   const response = await fetch(`${process.env.BASE_URL}/api/login`, {
@@ -26,8 +25,6 @@ export async function getWeblogPosts(): Promise<{ posts: Post[] }> {
       Authorization: `Bearer ${token}`,
     },
   });
-  const errorMessage = await handleError(response);
-  if (errorMessage) throw new Error(errorMessage);
   const data = await response.json();
   return data;
 }
@@ -39,8 +36,6 @@ export async function getPostDetail(postId: string): Promise<Post> {
       Authorization: `Bearer ${token}`,
     },
   });
-  const errorMessage = await handleError(response);
-  if (errorMessage) throw new Error(errorMessage);
   const data = await response.json();
   return data.post;
 }

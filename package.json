@@ -11,6 +11,7 @@
   "dependencies": {
     "@tanstack/react-query": "^4.36.1",
     "@tanstack/react-query-devtools": "^4.36.1",
+    "jose": "^5.9.4",
     "jsonwebtoken": "^9.0.2",
     "next": "14.2.14",
     "react": "^18",
